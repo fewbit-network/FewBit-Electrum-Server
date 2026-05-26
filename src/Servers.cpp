@@ -2080,6 +2080,9 @@ void Server::rpc_blockchain_transaction_broadcast(Client *c, const RPC::BatchId 
                 } else if (coin == BTC::Coin::LTC) {
                     clientName = "Electrum-LTC";
                     website = "https://electrum-ltc.org/";
+                } else if (coin == BTC::Coin::FBIT) {
+                    clientName = "Electrum-FBIT";
+                    website = "https://info.fewbit.online/";
                 } else {
                     clientName = "Electron Cash";
                     website = "https://electroncash.org/";

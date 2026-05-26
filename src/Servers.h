@@ -322,12 +322,13 @@ protected:
     bool usesWS = false;
 
     /// This is set on construction by querying Storage. Subclasses may use this information at runtime to present
-    /// RPC behavior differences between BTC vs BCH vs LTC (e.g. in the address_* RPCs).
+    /// RPC behavior differences between BTC vs BCH vs LTC vs FBIT (e.g. in the address_* RPCs).
     BTC::Coin coin = BTC::Coin::Unknown;
     /// If true we are on the BTC or LTC chains.
     bool isNonBCH() const { return coin != BTC::Coin::BCH; }
     bool isLTC() const { return coin == BTC::Coin::LTC; }
     bool isBTC() const { return coin == BTC::Coin::BTC; }
+    bool isFBIT() const { return coin == BTC::Coin::FBIT; }
 
 
     // --- Helpers used by Server* and AdminServer subclasses ---
