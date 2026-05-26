@@ -327,6 +327,7 @@ void BitcoinDMgr::refreshBitcoinDNetworkInfo()
             BTC::Coin coin = BTC::Coin::BCH; // default BCH if unknown (not segwit)
             if (res.isCore) coin = BTC::Coin::BTC; // segwit
             else if (res.isLTC) coin = BTC::Coin::LTC; // segwit
+            else if (res.isFBIT) coin = BTC::Coin::FBIT; // segwit
             emit coinDetected(coin);
             // next, be sure to set up the ping time appropriately for bchd vs bitcoind
             resetPingTimers(int(res.isBchd ? PingTimes::BCHD : PingTimes::Normal));
