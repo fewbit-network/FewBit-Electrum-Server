@@ -231,6 +231,7 @@ namespace {
             isBU = subversion.startsWith("/BCH Unlimited:");
             isBCHN = subversion.startsWith("/Bitcoin Cash Node:");
             isLTC = subversion.startsWith("/LitecoinCore:");
+            isFBIT = subversion.startsWith("/FewBit Core") || subversion.contains("FewBit");
             isFlowee = subversion.startsWith("/Flowee:");
             // regular bitcoind, "version" is reliable and always the same format
             version = Version::BitcoinDCompact(val);
@@ -248,6 +249,8 @@ namespace {
         if (isBU && version < Version{1, 9, 1})
             return true;
         if (isCore || isLTC) // core and/or ltc will definitely never add this feature
+            return true;
+        if (isFBIT)
             return true;
         // for all other remote daemons, return false so that calling code will probe.
         return false;
